@@ -6,13 +6,12 @@ function PersonCtrl () {
     var me = this;
 
     me.list = function (req, res) {
+        logger.info('Person::List');
         personModel.find({}, function (err, persons) {
             if (err) {
                 logger.error(err);
                 return res.status(500).send(err.toString());
             }
-
-            if (_.isEmpty(persons)) return res.status(404).send('No persons found');
 
             persons.forEach(function (person, index) {
                 persons[index] = person.toJSON();
@@ -23,6 +22,7 @@ function PersonCtrl () {
     };
 
     me.create = function (req, res) {
+        logger.info('Person::Create');
         personModel.findOne({name: req.body.name, surname: req.body.surname, age: req.body.age}, function (err, person) {
             if (err) {
                 logger.error(err);
@@ -49,6 +49,7 @@ function PersonCtrl () {
     };
 
     me.single = function (req, res) {
+        logger.info('Person::Single');
         personModel.findOne({'_id': req.params.personId}, function (err, person) {
             if (err) {
                 logger.error(err);
@@ -62,6 +63,7 @@ function PersonCtrl () {
     };
 
     me.update = function (req, res) {
+        logger.info('Person::Update');
         personModel.findOne({'_id': req.params.personId}, function (err, person) {
             if (err) {
                 logger.error(err);
@@ -86,6 +88,7 @@ function PersonCtrl () {
     };
 
     me.remove = function (req, res) {
+        logger.info('Person::Remove');
         personModel.findOne({'_id': req.params.personId}, function (err, person) {
             if (err) {
                 logger.error(err);
