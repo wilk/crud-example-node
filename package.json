@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "postinstall": "gulp config",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -15,5 +16,9 @@
     "express-domain-middleware": "^0.1.0",
     "lodash": "^3.3.1",
     "mongoose": "^3.8.24"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-rename": "^1.2.0"
   }
 }
